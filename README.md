@@ -12,7 +12,7 @@ The sql structure is going to be this one:
 
 The dates fields in the Subscription table are going to be automatically calculated with a trigger.
 
-###Security:
+### Security:
 -Users password are stored with BCrypt with a length of 255 to ensure privacy
 
 Integrity:
