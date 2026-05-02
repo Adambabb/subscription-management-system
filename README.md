@@ -24,3 +24,13 @@ The dates fields in the Subscription table are going to be automatically calcula
 
 ### Performance:
 -Implemented indexes for the foreigns keys in the subscription table to ensure fast performance in the searches
+
+
+
+### Java:
+The system works with 3 classes 1 for each table of the database
+
+-`User`:Handles the clientes(dni,name,lastname,email...)
+-`Plans`:manages the plans(prices,names,duration..)
+-`Subscriptions`:Processes the subscriptions(date of start, date of end...)
+*In the subscriptions the date of end is managed by a trigger in the database

@@ -1,61 +1,83 @@
 package com.adam.subscription_manager.model;
 
+//import the standart for the conexion to the database
+//import the time for the creation of the user
 import jakarta.persistence.*; 
 import java.time.LocalDateTime;
 
-@Entity 
-@Table(name = "USERS")
+//declare the table from the database
+@Entity
+@Table(name = "USERS") 
 public class User {
-
+	//declare the primary key and the sequence of the ids
     @Id 
-    /* 
-       ESTRATEGIA UNIVERSAL PARA ORACLE:
-       1. Usamos SEQUENCE en lugar de IDENTITY para que funcione en Oracle 11g y superiores.
-       2. 'generator' vincula este ID con el configurador de abajo.
-    */
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq_config")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_GEN")
+    @SequenceGenerator(
+        name = "USER_GEN", 
+        sequenceName = "USERS_SEQ", 
+        allocationSize = 1         
+    )
     
-    /* 
-       CONFIGURADOR DE LA SECUENCIA:
-       - name: nombre interno para Java.
-       - sequenceName: EL NOMBRE REAL QUE TIENE LA SECUENCIA EN ORACLE (USERS_SEQ).
-       - allocationSize = 1: Indica que los números van de 1 en 1.
-    */
-    @SequenceGenerator(name = "user_seq_config", sequenceName = "USERS_SEQ", allocationSize = 1)
-    @Column(name = "USERID")
+    //declare the variables for each column and the diferents elements like the length or the null
+    @Column(name = "USERID") 
     private Long id;
 
-    @Column(name = "USERNAME", nullable = false)
+    @Column(name = "USERNAME", nullable = false, length = 30)
     private String username;
 
-    @Column(name = "LASTNAME", nullable = false)
+    @Column(name = "LASTNAME", nullable = false, length = 50) 
     private String lastname;
 
-    @Column(name = "EMAIL", nullable = false, unique = true)
+    @Column(name = "EMAIL", nullable = false, unique = true, length = 100)
     private String email;
 
-    @Column(name = "DNI", nullable = false, unique = true)
+    @Column(name = "DNI", nullable = false, unique = true, length = 12)
     private String dni;
 
-    @Column(name = "USRPASS", nullable = false)
+    @Column(name = "USRPASS", nullable = false, length = 255)
     private String password;
 
     @Column(name = "CREATE_DATE", updatable = false)
     private LocalDateTime createDate;
 
-    // --- CONSTRUCTORES ---
-
+    // empty constructor for Hibernate to read
     public User() {
     }
 
+    //the constructor where we put the information of a user
     public User(String username, String lastname, String email, String dni, String password) {
         this.username = username;
         this.lastname = lastname;
         this.email = email;
         this.dni = dni;
         this.password = password;
-        this.createDate = LocalDateTime.now(); 
+        this.createDate = LocalDateTime.now();
     }
 
-    // --- ¡NO OLVIDES GENERAR GETTERS Y SETTERS AQUÍ! ---
+    //getter and setter for each column of the table
+    public Long getId() { 
+        return id; 
+    }
+    
+    public void setId(Long id) { 
+        this.id = id; 
+    }
+
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+
+    public String getLastname() { return lastname; }
+    public void setLastname(String lastname) { this.lastname = lastname; }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+
+    public String getDni() { return dni; }
+    public void setDni(String dni) { this.dni = dni; }
+
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+
+    public LocalDateTime getCreateDate() { return createDate; }
+    public void setCreateDate(LocalDateTime createDate) { this.createDate = createDate; }
 }
