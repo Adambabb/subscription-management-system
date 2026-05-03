@@ -22,9 +22,13 @@ public class PlansService {
 		return plansRepository.findAll();
 	}
 
-	public Plans findPlansbyId(Long Id){
-		Optional<Plans> plans=plansRepository.findById(Id);
+	public Plans findPlansbyId(Long id){
+		Optional<Plans> plans=plansRepository.findById(id);
 		return plans.orElse(null);
+	}
+
+	public List<Plans> findPlansbyState(String state){
+		return plansRepository.findByState(state);
 	}
 
 	public Plans savePlans(Plans plan) {
@@ -35,5 +39,14 @@ public class PlansService {
 		plansRepository.deleteById(id);
 	}
 
+	public void SoftdeletePlansbyId(Long id) throws Exception {
+		Optional<Plans> plans=plansRepository.findById(id);
+		if(plans.isEmpty()) {
+			throw new Exception("There isn't a plan with the id: " + id);
+		}
+		Plans plans2=plans.get();
+		plans2.setState("INACTIVE");
+		plansRepository.save(plans2);
+	}
 
 }

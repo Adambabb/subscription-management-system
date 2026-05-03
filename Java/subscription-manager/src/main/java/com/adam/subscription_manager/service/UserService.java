@@ -27,14 +27,27 @@ public class UserService {
 		Optional<User> user = userRepository.findById(id);
 		return user.orElse(null);
 	}
-
+	
+	public List<User> findUserByState(String state) {
+		return userRepository.findByState(state);
+	}
+	
 
 	public User saveUser(User user) {
 
 		return userRepository.save(user);
 	}
 
-
+	public void SoftdeleteUser(Long id) throws Exception {
+		Optional<User> user = userRepository.findById(id);
+		if (user.isEmpty()) {
+			throw new Exception("The user id " + id + " doesn't exists");
+		}
+		User user2= user.get();
+		user2.setState("INACTIVE");
+		userRepository.save(user2);
+	}
+	
 	public void deleteUser(Long id) {
 		userRepository.deleteById(id);
 	}

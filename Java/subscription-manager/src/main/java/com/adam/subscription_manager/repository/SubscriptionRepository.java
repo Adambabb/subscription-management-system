@@ -9,9 +9,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 //place where we  put new methods that dont come with the import
 @Repository
 public interface SubscriptionRepository extends JpaRepository<Subscription, Long> {
+
+	
+	List<Subscription> findByUserId(Long userId);
+	List<Subscription> findByPlanId(Long planId);
+	List<Subscription> findByState(String state);
 
 }
 

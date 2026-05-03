@@ -35,23 +35,26 @@ public class User {
     private String dni;
 
     @Column(name = "USRPASS", nullable = false, length = 255)
-    private String password;
+    private String usrpass;
 
-    @Column(name = "CREATE_DATE", updatable = false)
+    @Column(name = "CREATE_DATE", updatable = false, insertable = false)
     private LocalDateTime createDate;
+    
+    @Column(name = "STATE")
+    private String state="ACTIVE";
 
-    // empty constructor for Hibernate to read
+	// empty constructor for Hibernate to read
     public User() {
     }
 
     //the constructor where we put the information of a user
-    public User(String username, String lastname, String email, String dni, String password) {
+    public User(String username, String lastname, String email, String dni, String usrpass,String state) {
         this.username = username;
         this.lastname = lastname;
         this.email = email;
         this.dni = dni;
-        this.password = password;
-        this.createDate = LocalDateTime.now();
+        this.usrpass = usrpass;
+        this.state=state;
     }
 
     //getter and setter for each column of the table
@@ -75,9 +78,12 @@ public class User {
     public String getDni() { return dni; }
     public void setDni(String dni) { this.dni = dni; }
 
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
+    public String getUsrpass() { return usrpass; }
+    public void setUsrpass(String usrpass) { this.usrpass = usrpass; }
 
     public LocalDateTime getCreateDate() { return createDate; }
     public void setCreateDate(LocalDateTime createDate) { this.createDate = createDate; }
+    
+    public String getState() {return state;}
+	public void setState(String state) {this.state = state;}
 }

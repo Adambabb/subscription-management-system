@@ -43,3 +43,9 @@ in this clases we have the methods that we are going to use and we can create ot
 
 For the service Layer we have other 3 clases `UserService``PlansService` `SubscriptionsService`
 this layer handles the logic, calls the repository...
+
+In the controller layer we have  a service clas for each one of  the entities classes
+`UserController``PlansController` `SubscriptionsController`
+in this layer we controll the entry point where we communicate each .service with his controller and this layer manages the http requests
+for each controller we have a url being `/api/users` `/api/plans` `/api/subscriptions`
+and depends on the method we use we have diferents endpoints like for the getAllusers we have `/api/users/all` or for the deletePlans we have `/api/plans/delete/{id}`

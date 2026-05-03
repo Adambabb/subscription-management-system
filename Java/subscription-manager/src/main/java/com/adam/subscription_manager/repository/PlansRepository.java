@@ -4,6 +4,8 @@ package com.adam.subscription_manager.repository;
 import com.adam.subscription_manager.model.Plans;
 //import to be able to use the methods from the father class
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 //import to be able to create the repository
 
@@ -14,5 +16,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PlansRepository extends JpaRepository<Plans, Long> {
 
+	List<Plans> findByState(String state);
+	
 }
 

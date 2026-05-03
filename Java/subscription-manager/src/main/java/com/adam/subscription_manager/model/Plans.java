@@ -20,20 +20,23 @@ public class Plans {
 	private long id;
 	@Column(name="PLANNAME" ,nullable=false,unique=true,length=40)
 	private String planname;
-	@Column(name="PRICE",nullable=false,precision=10,scale=2 )
+	@Column(name="PRICE",nullable=false,columnDefinition = "NUMBER")
 	private Double price;
 	@Column(name="PLANDURATION",nullable=false)
 	private int duration;	
+    @Column(name = "STATE")
+    private String state="ACTIVE";
     // empty constructor for Hibernate to read
 
 	public Plans() {
 		
 	}
     //the constructor where we put the information of a plan
-	public Plans(String planname,Double price, int duration) {
+	public Plans(String planname,Double price, int duration, String state) {
 		this.planname=planname;
 		this.price=price;
 		this.duration=duration;
+		this.state=state;
 	}
     //getter and setter for each column of the table
 
@@ -68,4 +71,12 @@ public class Plans {
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
+	
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	
 }

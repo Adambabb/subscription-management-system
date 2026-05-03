@@ -23,6 +23,8 @@ public class Subscription {
 	private LocalDateTime createDateStart;
 	@Column(name="DATEEND" ,updatable=false,insertable=false)
 	private LocalDateTime createDateEnd;
+    @Column(name = "STATE")
+    private String state="ACTIVE";
 	
 	@ManyToOne
 	@JoinColumn(name="USERID", nullable=false)
@@ -38,10 +40,11 @@ public class Subscription {
 	}
     //the constructor where we put the information of a subscription
 
-	public Subscription(User user,Plans plan) {
+	public Subscription(User user,Plans plan,String state) {
 		this.user=user;
 		this.plan=plan;
 		this.createDateStart=LocalDateTime.now();
+		this.state=state;
 	}
     //declare the variables for each column and the diferents elements like the length or the null
 	public long getId() {
@@ -82,6 +85,14 @@ public class Subscription {
 
 	public void setPlan(Plans plan) {
 		this.plan = plan;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 	
 	

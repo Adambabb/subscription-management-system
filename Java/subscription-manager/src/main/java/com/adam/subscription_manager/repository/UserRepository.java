@@ -2,6 +2,9 @@ package com.adam.subscription_manager.repository;
 
 //imports of the class where we have the elements of the table
 import com.adam.subscription_manager.model.User;
+
+import java.util.List;
+
 //import to be able to use the methods from the father class
 import org.springframework.data.jpa.repository.JpaRepository;
 //import to be able to create the repository
@@ -12,4 +15,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
+	
+	List<User> findByState(String state);
 }
