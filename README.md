@@ -37,6 +37,9 @@ The system works with 3 classes 1 for each table of the database (Entities)
 
 
 The Service Layer acts as the intermediary between the Controllers (API endpoints) and the Repositories (Database access).
-In this layer we have 3 clases one for each of the entities
+In this layer we have 3 repository clases one for each of the entities
 `UserRepository``PlansRepository` `SubscriptionsRepository`
-in this clases we have the methods that we are going to use and we can create others 
+in this clases we have the methods that we are going to use and we can create others
+
+For the service Layer we have other 3 clases `UserService``PlansService` `SubscriptionsService`
+this layer handles the logic, calls the repository...
