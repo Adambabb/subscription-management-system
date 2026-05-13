@@ -27,12 +27,15 @@ The dates fields in the Subscription table are going to be automatically calcula
 
 
 
+
 ### Java:
 The system works with 3 classes 1 for each table of the database (Entities)
+
 
 -`User`:Handles the clientes(dni,name,lastname,email...)
 -`Plans`:manages the plans(prices,names,duration..)
 -`Subscriptions`:Processes the subscriptions(date of start, date of end...)
+
 *In the subscriptions the date of end is managed by a trigger in the database
 
 
@@ -49,3 +52,4 @@ In the controller layer we have  a service clas for each one of  the entities cl
 in this layer we controll the entry point where we communicate each .service with his controller and this layer manages the http requests
 for each controller we have a url being `/api/users` `/api/plans` `/api/subscriptions`
 and depends on the method we use we have diferents endpoints like for the getAllusers we have `/api/users/all` or for the deletePlans we have `/api/plans/delete/{id}`
+
