@@ -25,10 +25,31 @@ The dates fields in the Subscription table are going to be automatically calcula
 ### Performance:
 -Implemented indexes for the foreigns keys in the subscription table to ensure fast performance in the searches
 
+
+
+
 ### Java:
-The system works with 3 classes 1 for each table of the database
+The system works with 3 classes 1 for each table of the database (Entities)
+
 
 -`User`:Handles the clientes(dni,name,lastname,email...)
 -`Plans`:manages the plans(prices,names,duration..)
 -`Subscriptions`:Processes the subscriptions(date of start, date of end...)
+
 *In the subscriptions the date of end is managed by a trigger in the database
+
+
+The Service Layer acts as the intermediary between the Controllers (API endpoints) and the Repositories (Database access).
+In this layer we have 3 repository clases one for each of the entities
+`UserRepository``PlansRepository` `SubscriptionsRepository`
+in this clases we have the methods that we are going to use and we can create others
+
+For the service Layer we have other 3 clases `UserService``PlansService` `SubscriptionsService`
+this layer handles the logic, calls the repository...
+
+In the controller layer we have  a service clas for each one of  the entities classes
+`UserController` `PlansController` `SubscriptionsController`
+in this layer we controll the entry point where we communicate each .service with his controller and this layer manages the http requests
+for each controller we have a url being `/api/users` `/api/plans` `/api/subscriptions`
+and depends on the method we use we have diferents endpoints like for the getAllusers we have `/api/users/all` or for the deletePlans we have `/api/plans/delete/{id}`
+
