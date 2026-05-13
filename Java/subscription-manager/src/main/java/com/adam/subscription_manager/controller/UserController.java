@@ -52,7 +52,7 @@ public class UserController {
 		userService.deleteUser(id);
 	}
 
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/delete/soft/{id}")
 	public ResponseEntity<String> SoftdeleteUser(@PathVariable("id") Long id) {
 		try {
 			userService.SoftdeleteUser(id);

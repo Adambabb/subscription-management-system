@@ -53,7 +53,7 @@ public class PlansController {
 		 plansService.deletePlansbyId(id);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/delete/soft/{id}")
 	public ResponseEntity<String> SoftdeletePlan(@PathVariable("id") Long id) {
 		 try {
 			 plansService.SoftdeletePlansbyId(id);

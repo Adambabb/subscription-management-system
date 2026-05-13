@@ -59,7 +59,7 @@ public class SubscriptionController {
 		 subscriptionServices.deleteSubscriptionbyId(id);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/delete/soft/{id}")
 	public ResponseEntity<String> SoftdeleteSubscription(@PathVariable("id") Long id) {
 		 try {
 			subscriptionServices.SoftdeleteSubscriptionbyId(id);
