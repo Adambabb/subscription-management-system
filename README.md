@@ -44,7 +44,7 @@ In this layer we have 3 repository clases one for each of the entities
 `UserRepository``PlansRepository` `SubscriptionsRepository`
 in this clases we have the methods that we are going to use and we can create others
 
-For the service Layer we have other 3 clases `UserService``PlansService` `SubscriptionsService`
+For the service Layer we have other 3 clases `UserService` `PlansService` `SubscriptionsService`
 this layer handles the logic, calls the repository...
 
 In the controller layer we have  a service clas for each one of  the entities classes
