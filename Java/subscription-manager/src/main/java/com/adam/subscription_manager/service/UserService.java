@@ -12,12 +12,18 @@ import org.springframework.stereotype.Service;
 //import to use the list and the optional
 import java.util.List;
 import java.util.Optional;
+// import for the Bcrypt encoder
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+
 
 @Service
 public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
 	public List<User> findAllUsers() {
 		return userRepository.findAll();
@@ -33,10 +39,15 @@ public class UserService {
 	}
 	
 
-	public User saveUser(User user) {
+	    public User saveUser(User user) {
 
-		return userRepository.save(user);
-	}
+	        String hash = passwordEncoder.encode(user.getUsrpass());
+	        user.setUsrpass(hash);
+	        
+	        return userRepository.save(user);
+	    }
+	
+	
 
 	public void SoftdeleteUser(Long id) throws Exception {
 		Optional<User> user = userRepository.findById(id);
